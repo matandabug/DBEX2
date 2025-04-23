@@ -1,11 +1,11 @@
 select name
 from  members natural join 
-(select number
+((select number
 from members natural join (select number, uid
 from memberInKnesset
 where party = 'Mapai')
 where name = 'David Ben Gurion') BenGurionKnessets natural join 
 (select number, uid
 from memberInKnesset
-where party = 'Mapai') MapaiMembers
+where party = 'Mapai') MapaiMembers) MapaiBenGurionKnessets
 order by name;
