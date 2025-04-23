@@ -4,7 +4,7 @@ from  members natural join
 from members natural join (select number, uid
 from memberInKnesset
 where party = 'Mapai')
-where name = 'David Ben Gurion') natural join 
+where name = 'David Ben Gurion') BenGurionKnessets natural join 
 (select number, uid
 from memberInKnesset
 where party = 'Mapai') MapaiMembers
