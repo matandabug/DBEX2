@@ -24,5 +24,6 @@ where party = 'Mapai') MapaiMembers1
 where name = 'David Ben-Gurion')
 except 
 (select number
-from memberInKnesset
-where uid = M.uid and party = 'Mapai'))
+from memberInKnesset M1
+where M1.uid = M.uid))
+order by name;
