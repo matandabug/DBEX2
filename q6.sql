@@ -11,13 +11,18 @@
 -- where party = 'Mapai') MapaiMembers) MapaiBenGurionKnessets) membersWithBenGurion
 -- order by name;
 
-select * 
-from ( select number
+select name
+from (select distinct * 
+from members 
+natural join (select number, uid
+from memberInKnesset
+where party = 'Mapai')) M
+where not exists ((select number
 from members natural join (select number, uid
 from memberInKnesset
 where party = 'Mapai') MapaiMembers1
-where name = 'David Ben-Gurion'
-) BenGurionKnessets natural join 
-(select number, uid
+where name = 'David Ben-Gurion')
+except 
+(select number
 from memberInKnesset
-where party = 'Mapai') MapaiMembers;
+where uid = M.uid and party = 'Mapai'))
