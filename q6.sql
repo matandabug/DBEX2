@@ -19,4 +19,4 @@ where party = 'Mapai') MapaiMembers1
 where name = 'David Ben Gurion') BenGurionKnessets natural join 
 (select number, uid
 from memberInKnesset
-where party = 'Mapai') MapaiMembersף
+where party = 'Mapai') MapaiMembers;
