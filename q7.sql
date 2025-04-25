@@ -22,10 +22,11 @@ NATURAL JOIN (
     NATURAL JOIN (
         SELECT m1.number AS number, m1.uid AS uid
         FROM
-            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members)) AS m1
+            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members) AS m_sub1) AS m1
         JOIN
-            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members)) AS m2
+            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members) AS m_sub2) AS m2
         ON m1.number = m2.number AND m1.birthYear > m2.birthYear
     ) AS youngerDuplicates
 ) AS filtered
 ORDER BY k, n;
+ k, n;
