@@ -8,5 +8,5 @@ from members natural join (
     from (membersInKnesset natural join (select uid, birthYear from members) m11) m1 JOIN
     (membersInKnesset natural join (select uid, birthYear from members) m21) m2 on m1.number = m2.number
     where m1.birthYear > m2.birthYear) T1
-)
+) T2
 order by k, n;
