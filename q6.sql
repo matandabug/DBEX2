@@ -12,8 +12,8 @@
 -- order by name;
 
 select name
-from (members M join memberInKnesset MIK on MIK.uid = M.uid) MEMS
-where MEMS.party = 'Mapai' and not exists (
+from members M join memberInKnesset MIK on MIK.uid = M.uid
+where MIK.party = 'Mapai' and not exists (
     (select number
 from members Mem1 join memberInKnesset MIK1 on MIK1.uid = Mem1.uid
 where Mem1.name = 'David Ben-Gurion' and MIK1.party = 'Mapai')
@@ -24,7 +24,7 @@ where M1.uid = M.uid))
 order by name;
 
 select name
-from (select * from members M join memberInKnesset MIK on MIK.uid = M.uid) MEMS
+from (select * from members M join memberInKnesset MIK on MIK.uid = M.uid) as MEMS
 where MEMS.party = 'Mapai' and not exists (
     (select number
 from members Mem1 join memberInKnesset MIK1 on MIK1.uid = Mem1.uid
