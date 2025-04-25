@@ -10,3 +10,22 @@ from members natural join (
     where m1.number = m2.number and m1.birthYear > m2.birthYear)
 )
 order by k, n;
+
+SELECT number AS k, name AS n
+FROM members
+NATURAL JOIN (
+    SELECT *
+    FROM membersInKnesset
+    EXCEPT
+    SELECT *
+    FROM membersInKnesset
+    NATURAL JOIN (
+        SELECT m1.number AS number, m1.uid AS uid
+        FROM
+            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members)) AS m1
+        JOIN
+            (membersInKnesset NATURAL JOIN (SELECT uid, birthYear FROM members)) AS m2
+        ON m1.number = m2.number AND m1.birthYear > m2.birthYear
+    ) AS youngerDuplicates
+) AS filtered
+ORDER BY k, n;
