@@ -10,3 +10,4 @@ from members natural join (
     where m1.birthYear > m2.birthYear) T1
 ) T2
 order by k, n;
+
