@@ -11,7 +11,7 @@
 -- where party = 'Mapai') MapaiMembers) MapaiBenGurionKnessets) membersWithBenGurion
 -- order by name;
 
-select name
+select distinct name
 from members M join memberInKnesset MIK on MIK.uid = M.uid
 where MIK.party = 'Mapai' and not exists (
     (select number
@@ -23,7 +23,7 @@ from memberInKnesset M1
 where M1.uid = M.uid))
 order by name;
 
-select name
+select distinct name
 from (select * from members M join memberInKnesset MIK on MIK.uid = M.uid) as MEMS
 where MEMS.party = 'Mapai' and not exists (
     (select number
