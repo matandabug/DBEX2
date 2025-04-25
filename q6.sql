@@ -1,4 +1,4 @@
-select name
+select distinct name
 from (members natural join 
 (select * 
 from (select number
