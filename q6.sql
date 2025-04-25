@@ -1,6 +1,7 @@
 select name
 from (members natural join 
-((select number
+(select * 
+from (select number
 from members natural join (select number, uid
 from memberInKnesset
 where party = 'Mapai') MapaiMembers1
