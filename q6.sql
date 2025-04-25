@@ -24,7 +24,7 @@ where M1.uid = M.uid))
 order by name;
 
 select distinct name
-from (select * from members M join memberInKnesset MIK on MIK.uid = M.uid) as MEMS
+from (select * from members M natural join memberInKnesset MIK) as MEMS
 where MEMS.party = 'Mapai' and not exists (
     (select number
 from members Mem1 join memberInKnesset MIK1 on MIK1.uid = Mem1.uid
