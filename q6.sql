@@ -20,5 +20,5 @@ where Mem1.name = 'David Ben-Gurion' and MIK1.party = 'Mapai')
 except 
 (select number
 from memberInKnesset M1
-where M1.uid = MEMS.uid))
+where M1.uid = M.uid))
 order by name;
