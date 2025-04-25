@@ -13,7 +13,7 @@
 
 -- select * 
 -- from (
-    select number
+    select number, name
 from members natural join (select number, uid
 from memberInKnesset
 where party = 'Mapai') MapaiMembers1;
